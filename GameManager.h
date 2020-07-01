@@ -1,4 +1,5 @@
 #include "Trainer.h"
+#include "BattleManager.h"
 
 class GameManager
 {

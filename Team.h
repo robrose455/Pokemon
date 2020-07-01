@@ -12,9 +12,10 @@ class Team
         void AddPokemon(Pokemon p);
         void ViewTeam();
 
+        vector<Pokemon> pokeVect_;
+
     private:
 
-        vector<Pokemon> pokeVect_;
 
 
 };

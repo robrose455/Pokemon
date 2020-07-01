@@ -11,12 +11,13 @@ class Trainer
         void ViewTeam();
         string getName();
 
+        Team pokeTeam_;
+
 
 
     private:
 
         string name_;
-        Team pokeTeam_;
 
 };
 

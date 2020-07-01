@@ -28,15 +28,16 @@ class Pokemon
         void setCurHp(int hp);
         int getCurHp();
 
+        vector<Move> moves_;
+
     private:
 
         string name_;
         string type_;
 
+        int lvl_;
         int maxHp_;
         int curHp_;
-
-        vector<Move> moves_;
 
 
 
