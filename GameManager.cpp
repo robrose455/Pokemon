@@ -48,9 +48,10 @@ void GameManager::BattleTrainer() {
 
     Trainer enemy;
     enemy = GenerateTrainer();
-
-    enemy.ViewTeam();
     user_.ViewTeam();
+    enemy.ViewTeam();
+    BattleManager bm(this->user_, enemy);
+    bm.InitiateBattle();
 
     cout << "You battle and you win, good job sport." << endl;
 
