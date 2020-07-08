@@ -1,22 +1,24 @@
+#pragma once
 #include "Trainer.h"
 
 class BattleManager
 {
-    public:
+public:
 
-        BattleManager();
-        BattleManager(Trainer user, Trainer enemy);
+    BattleManager();
+    BattleManager(Trainer user, Trainer enemy);
 
-        void InitiateBattle();
+    void InitiateBattle();
 
 
 
-    private:
+private:
 
-        Trainer user_;
-        Trainer enemy_;
-        Pokemon userActivePokemon_;
-        Pokemon enemyActivePokemon_;
+    Trainer user_;
+    Trainer enemy_;
+    Pokemon userActivePokemon_;
+    Pokemon enemyActivePokemon_;
 
 };
+
 

@@ -20,7 +20,8 @@ void Team::AddPokemon(Pokemon p) {
         name = p.getName();
         // cout << "POKEMON ADDED: " << name << endl;
 
-    } else {
+    }
+    else {
 
         // cout << "CANNOT ADD POKEMON -- TEAM FULL" << endl;
     }
@@ -35,11 +36,10 @@ void Team::ViewTeam() {
     for (int i = 0; i < pokeVect_.size(); i++) {
 
         name = pokeVect_[i].getName();
-        cout << name << " || " ;
+        cout << name << " || ";
 
 
     }
 
     cout << endl;
 }
-

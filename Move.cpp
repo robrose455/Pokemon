@@ -4,7 +4,7 @@ Move::Move()
 
 }
 Move::Move(string name, string type)
-: name_(name), type_(type)
+    : name_(name), type_(type)
 {
 
 }

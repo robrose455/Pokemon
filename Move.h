@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <iostream>
 
@@ -6,22 +7,22 @@ using namespace std;
 
 class Move
 {
-    public:
+public:
 
-        Move();
-        Move(string name, string type);
+    Move();
+    Move(string name, string type);
 
-        void setName(string name);
-        string getName();
+    void setName(string name);
+    string getName();
 
-        void setType(string type);
-        string getType();
+    void setType(string type);
+    string getType();
 
 
-    private:
+private:
 
-        string name_;
-        string type_;
+    string name_;
+    string type_;
 
 };
 

@@ -1,27 +1,29 @@
+#pragma once
 #include "Trainer.h"
 #include "BattleManager.h"
 
 class GameManager
 {
-    public:
+public:
 
-        GameManager(Trainer user);
-        void PopulatePokemonPool();
+    GameManager(Trainer user);
+    void PopulatePokemonPool();
 
-        Trainer GenerateTrainer();
-        void BattleTrainer();
-        void EncounterPokemon();
-
-
+    Trainer GenerateTrainer();
+    void BattleTrainer();
+    void EncounterPokemon();
 
 
 
 
-    private:
 
-        Trainer user_;
-        vector<Pokemon> pokePool_;
+
+private:
+
+    Trainer user_;
+    vector<Pokemon> pokePool_;
 
 };
+
 
 

@@ -1,24 +1,22 @@
-#ifndef TRAINER_H
-#define TRAINER_H
+#pragma once
 #include "Team.h"
 
 class Trainer
 {
-    public:
+public:
 
-        Trainer();
-        Trainer(Team pokeTeam, string name);
-        void ViewTeam();
-        string getName();
+    Trainer();
+    Trainer(Team pokeTeam, string name);
+    void ViewTeam();
+    string getName();
 
-        Team pokeTeam_;
+    Team pokeTeam_;
 
 
 
-    private:
+private:
 
-        string name_;
+    string name_;
 
 };
 
-#endif // TRAINER_H

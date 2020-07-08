@@ -1,20 +1,21 @@
+#pragma once
 #include <vector>
 #include "Pokemon.h"
 using namespace std;
 
 class Team
 {
-    public:
+public:
 
 
-        Team();
+    Team();
 
-        void AddPokemon(Pokemon p);
-        void ViewTeam();
+    void AddPokemon(Pokemon p);
+    void ViewTeam();
 
-        vector<Pokemon> pokeVect_;
+    vector<Pokemon> pokeVect_;
 
-    private:
+private:
 
 
 

@@ -5,7 +5,7 @@ Trainer::Trainer() {
 }
 
 Trainer::Trainer(Team pokeTeam, string name)
-: pokeTeam_(pokeTeam), name_(name) {}
+    : pokeTeam_(pokeTeam), name_(name) {}
 
 void Trainer::ViewTeam() {
 

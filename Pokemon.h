@@ -1,45 +1,98 @@
+#pragma once
 #include <string>
 #include <iostream>
 #include <vector>
 #include "Move.h"
-
+#include "FileManager.h"
 
 using namespace std;
 
 class Pokemon
 {
-    public:
+public:
 
-        Pokemon();
-        Pokemon(string name, string type);
+    Pokemon();
+    Pokemon(string name, int lvl);
 
-        void AddMove(Move m);
-        void ViewMoves();
+    void AddMove(Move m);
+    void ViewMoves();
 
-        void setName(string name);
-        string getName();
+    void CreateCurrentStats();
+    void CreateIVs(); 
+    void SetNature();
 
-        void setType(string type);
-        string getType();
+    void setName(string name);
+    string getName();
 
-        void setMaxHp(int hp);
-        int getMaxHp();
+    void setType1(string type1);
+    string getType1();
 
-        void setCurHp(int hp);
-        int getCurHp();
+    void setType2(string type2);
+    string getType2();
 
-        vector<Move> moves_;
+    void setLvl(int lvl);
+    int getLvl();
 
-    private:
+    void setBaseHp(int baseHp);
+    int getBaseHp();
 
-        string name_;
-        string type_;
+    void setBaseAtk(int baseAtk);
+    int getBaseAtk();
 
-        int lvl_;
-        int maxHp_;
-        int curHp_;
+    void setBaseDef(int baseDef);
+    int getBaseDef();
+
+    void setBaseSpd(int baseSpd);
+    int getBaseSpd();
+
+    void setBaseSpatk(int baseSpatk);
+    int getBaseSpatk();
+
+    void setBaseSpdef(int baseSpdef);
+    int getBaseSpdef();
+
+    void setMaxHp(int hp);
+    int getMaxHp();
+
+    void setCurHp(int hp);
+    int getCurHp();
+
+    vector<Move> moves_;
+
+private:
+
+    string name_;
+    string type1_;
+    string type2_;
+    string nature_; 
+
+    int lvl_ = 0;
+
+    int maxHp_ = 0;
+    int curHp_ = 0;
+    int atk_ = 0;
+    int def_ = 0;
+    int spAtk_ = 0;
+    int spDef_ = 0;
+    int spd_ = 0;
+
+    int HpIV_ = 0;
+    int AtkIV_ = 0;
+    int DefIV_ = 0;
+    int SpAtkIV_ = 0;
+    int SpDefIV_ = 0;
+    int SpdIV_ = 0;
+
+
+    int baseHp_ = 0;
+    int baseAtk_ = 0;
+    int baseDef_ = 0;
+    int baseSpd_ = 0;
+    int baseSpatk_ = 0;
+    int baseSpdef_ = 0;
 
 
 
 };
+
 

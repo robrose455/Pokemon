@@ -8,7 +8,7 @@ BattleManager::BattleManager()
 }
 
 BattleManager::BattleManager(Trainer user, Trainer enemy)
-: user_(user), enemy_(enemy) {}
+    : user_(user), enemy_(enemy) {}
 
 void BattleManager::InitiateBattle() {
 
@@ -31,24 +31,27 @@ void BattleManager::InitiateBattle() {
         string moveName = userActivePokemon_.moves_[0].getName();
         cout << name << " used " << moveName << "!" << endl;
 
-    } else if (input == 2) {
+    }
+    else if (input == 2) {
 
         string moveName = userActivePokemon_.moves_[1].getName();
         cout << name << " used " << moveName << "!" << endl;
 
-    } else if (input == 3) {
+    }
+    else if (input == 3) {
 
         string moveName = userActivePokemon_.moves_[2].getName();
         cout << name << " used " << moveName << "!" << endl;
 
-    } else if (input == 4) {
+    }
+    else if (input == 4) {
 
         string moveName = userActivePokemon_.moves_[3].getName();
         cout << name << " used " << moveName << "!" << endl;
 
     }
 
-    srand((unsigned) time(0));
+    /* srand((unsigned) time(0));
     int enemyMoveIndex;
     enemyMoveIndex = (rand() % 4);
 
@@ -72,7 +75,7 @@ void BattleManager::InitiateBattle() {
         string moveName = enemyActivePokemon_.moves_[3].getName();
         cout << name2 << " used " << moveName << "!" << endl;
 
-    }
+    } */
 
 
 }

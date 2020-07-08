@@ -4,19 +4,18 @@
 #include <iostream>
 
 GameManager::GameManager(Trainer user)
-: user_(user)
+    : user_(user)
 {
     PopulatePokemonPool();
 }
 
 void GameManager::PopulatePokemonPool() {
 
-    string names[10] = {"Togepi", "Squirtle", "Eevee", "Pikachu", "Charmander", "Bulbasaur", "Onix", "Mankey", "Pidgey", "Kyogre"};
-    string types[10] = {"Normal", "Water", "Normal", "Electric", "Fire", "Grass", "Rock", "Fighting", "Water"};
+    string names[10] = { "Darkrai", "Squirtle", "Eevee", "Pikachu", "Charmander", "Bulbasaur", "Onix", "Mankey", "Pidgey", "Kyogre" };
 
     for (int i = 0; i < 10; i++) {
 
-        Pokemon p(names[i], types[i]);
+        Pokemon p(names[i], 5);
         pokePool_.push_back(p);
 
     }
@@ -25,7 +24,7 @@ void GameManager::PopulatePokemonPool() {
 Trainer GameManager::GenerateTrainer() {
 
 
-    srand((unsigned) time(0));
+    srand((unsigned)time(0));
     int index;
 
 
@@ -61,7 +60,7 @@ void GameManager::BattleTrainer() {
 
 void GameManager::EncounterPokemon() {
 
-    srand((unsigned) time(0));
+    srand((unsigned)time(0));
     int index;
     index = (rand() % 10);
 
