@@ -17,9 +17,13 @@ public:
     void AddMove(Move m);
     void ViewMoves();
 
-    void CreateCurrentStats();
+    void SetExperience();
+    void UpdateCurrentStats();
     void CreateIVs(); 
     void SetNature();
+
+    void GainExperience(int xpGain);
+    void LvlUp();
 
     void setName(string name);
     string getName();
@@ -30,8 +34,26 @@ public:
     void setType2(string type2);
     string getType2();
 
+    void setNature(string nature);
+    string getNature();
+
     void setLvl(int lvl);
     int getLvl();
+
+    void setAtk(int atk);
+    int getAtk();
+
+    void setDef(int def);
+    int getDef();
+
+    void setSpd(int spd);
+    int getSpd();
+
+    void setSpAtk(int SpAtk);
+    int getSpAtk();
+
+    void setSpDef(int SpDef);
+    int getSpDef();
 
     void setBaseHp(int baseHp);
     int getBaseHp();
@@ -67,7 +89,6 @@ private:
     string nature_; 
 
     int lvl_ = 0;
-
     int maxHp_ = 0;
     int curHp_ = 0;
     int atk_ = 0;
@@ -91,7 +112,9 @@ private:
     int baseSpatk_ = 0;
     int baseSpdef_ = 0;
 
-
+    int totalXP_ = 0;
+    int XPUntilNextLvl = 0;
+    string XPGroup_;
 
 };
 

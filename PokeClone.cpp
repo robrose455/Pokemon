@@ -11,7 +11,8 @@ int main()
     // TEST FILE READING
 
 
-    Pokemon p("Alakazam", 100);
+    Pokemon p("Alakazam", 50);
+    p.GainExperience(100000);
 
     /*p.setName("Torchic");
     p.setType1("Fire");

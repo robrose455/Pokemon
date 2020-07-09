@@ -23,10 +23,12 @@ Pokemon::Pokemon(string name, int lvl)
     baseSpatk_ = stoi(statsData[5]);
     baseSpdef_ = stoi(statsData[6]);
     baseSpd_ = stoi(statsData[7]);
+    XPGroup_ = "Slow";
 
+    SetExperience();
     SetNature();
     CreateIVs();
-    CreateCurrentStats();
+    UpdateCurrentStats();
 
     cout << "POKEMON CREATED: ---- " << name_ << endl;
     cout << "CURRENT LEVEL: " << lvl_ << endl;
@@ -59,6 +61,104 @@ Pokemon::Pokemon(string name, int lvl)
 
 }
 
+void Pokemon::SetExperience() {
+
+
+    if (XPGroup_ == "Erratic") {
+
+        int nextLvl = lvl_ + 1;
+
+        if (lvl_ <= 50) {
+
+            totalXP_ = (((lvl_ * lvl_ * lvl_) * (100 - lvl_)) / 50);
+            XPUntilNextLvl = (((nextLvl * nextLvl * nextLvl) * (100 - nextLvl)) / 50);
+
+        }
+        else if (lvl_ > 50 && lvl_ < 68) {
+
+            totalXP_ = (((lvl_ * lvl_ * lvl_) * (100 - lvl_)) / 100);
+            XPUntilNextLvl = (((nextLvl * nextLvl * nextLvl) * (100 - nextLvl)) / 100);
+
+        }
+        else if (lvl_ >= 68 && lvl_ > 98) {
+
+            totalXP_ = (((lvl_ * lvl_ * lvl_) * ((1911 - 10 * lvl_)/3) / 500));
+            XPUntilNextLvl = (((nextLvl * nextLvl * nextLvl) * ((1911 - 10 * nextLvl)/3) / 500));
+
+        }
+        else if (lvl_ >= 98) {
+
+            totalXP_ = (((lvl_ * lvl_ * lvl_) * (160 - lvl_)) / 100);
+            XPUntilNextLvl = (((nextLvl * nextLvl * nextLvl) * (160 - nextLvl)) / 100);
+
+        }
+
+        cout << totalXP_ << " <--- Total XP" << endl;
+        cout << XPUntilNextLvl << " <--- XP Next Lvel" << endl;
+
+
+    }
+
+    if (XPGroup_ == "Fast") {
+
+
+        totalXP_ = ((4 * (lvl_ * lvl_ * lvl_)) / 5);
+
+        int nextLvl = lvl_ + 1;
+        XPUntilNextLvl = ((4 * (nextLvl * nextLvl * nextLvl)) / 5);
+
+        //cout << totalXP_ << " <--- Total XP" << endl;
+        //cout << XPUntilNextLvl << " <--- XP Next Lvel" << endl;
+    }
+
+    if (XPGroup_ == "Medium Fast") {
+
+        int nextLvl = lvl_ + 1;
+
+        totalXP_ = (lvl_ * lvl_ * lvl_);
+        XPUntilNextLvl = (nextLvl * nextLvl * nextLvl);
+
+        //cout << totalXP_ << " <--- Total XP" << endl;
+        //cout << XPUntilNextLvl << " <--- XP Next Lvel" << endl;
+
+    } 
+    
+    if (XPGroup_ == "Medium Slow") {
+
+        int nextLvl = lvl_ + 1;
+        totalXP_ = (6 * (lvl_ * lvl_ * lvl_) / 5) - (15 * (lvl_ * lvl_)) + (100 * lvl_) - 140;
+        XPUntilNextLvl = (6 * (nextLvl * nextLvl * nextLvl) / 5) - (15 * (nextLvl * nextLvl)) + (100 * nextLvl) - 140;
+
+        cout << totalXP_ << " <--- Total XP" << endl;
+        cout << XPUntilNextLvl << " <--- XP Next Lvel" << endl;
+
+    } 
+
+    if (XPGroup_ == "Slow") {
+
+        int nextLvl = lvl_ + 1;
+        totalXP_ = (5 * (lvl_ * lvl_ * lvl_) / 4);
+        XPUntilNextLvl = ( 5 * (nextLvl * nextLvl * nextLvl) / 4);
+
+        cout << totalXP_ << " <--- Total XP" << endl;
+        cout << XPUntilNextLvl << " <--- XP Next Lvel" << endl;
+
+    }
+
+
+    if (XPGroup_ == "Fluctuating") {
+
+        int nextLvl = lvl_ + 1;
+
+
+    }
+
+
+
+
+
+}
+
 void Pokemon::CreateIVs() {
 
     vector<int> IVs;
@@ -80,12 +180,11 @@ void Pokemon::CreateIVs() {
     SpDefIV_ = IVs[4];
     SpdIV_ = IVs[5];
 
-
     return;
 
 }
 
-void Pokemon::CreateCurrentStats() {
+void Pokemon::UpdateCurrentStats() {
 
     maxHp_ = (((2 * baseHp_ + HpIV_) * lvl_) / 100 ) + lvl_ + 10;
     curHp_ = maxHp_;
@@ -104,6 +203,7 @@ void Pokemon::CreateCurrentStats() {
     }
     else if (nature_ == "Bashful") {
 
+        //Neutral
 
     }
     else if (nature_ == "Bold") {
@@ -130,7 +230,7 @@ void Pokemon::CreateCurrentStats() {
     }
     else if (nature_ == "Docile") {
 
-     
+        //Neutral
 
     }
     else if (nature_ == "Gentle") {
@@ -141,19 +241,23 @@ void Pokemon::CreateCurrentStats() {
     }
     else if (nature_ == "Hardy") {
 
-      
+        //Neutral
 
     }
     else if (nature_ == "Hasty") {
 
         spd_ = spd_ * 1.1;
         def_ = def_ * 0.9;
+
     }
+
     else if (nature_ == "Impish") {
 
         def_ = def_ * 1.1;
         spAtk_ = spAtk_ * 0.9;
+
     }
+
     else if (nature_ == "Jolly") {
 
         spd_ = spd_ * 1.1;
@@ -172,78 +276,80 @@ void Pokemon::CreateCurrentStats() {
 
         atk_ = atk_ * 1.1;
         def_ = def_ * 0.9;
+
     }
+
     else if (nature_ == "Mild") {
 
         spAtk_ = spAtk_ * 1.1;
         def_ = def_ * 0.9;
+
     }
+
     else if (nature_ == "Modest") {
 
         spAtk_ = spAtk_ * 1.1;
         atk_ = atk_ * 0.9;
+
     }
+
     else if (nature_ == "Naive") {
 
         spd_ = spd_ * 1.1;
         spDef_ = spDef_ * 0.9;
 
-
     }
+
     else if (nature_ == "Naughty") {
 
         atk_ = atk_ * 1.1;
         spDef_ = spDef_ * 0.9;
 
     }
+
     else if (nature_ == "Quiet") {
 
         spAtk_ = spAtk_ * 1.1;
         spd_ = spd_ * 0.9;
 
     }
+
     else if (nature_ == "Quirky") {
 
         spDef_ = spDef_ * 1.1;
         spDef_ = spDef_ * 0.9;
 
-
     }
+
     else if (nature_ == "Rash") {
 
         spAtk_ = spAtk_ * 1.1;
         spDef_ = spDef_ * 0.9;
 
-
     }
+
     else if (nature_ == "Relaxed") {
 
         def_ = def_ * 1.1;
         spd_ = spd_ * 0.9;
 
     }
+
     else if (nature_ == "Sassy") {
 
         spDef_ = spDef_ * 1.1;
         spd_ = spd_ * 0.9;
     
-
     }
-    else if (nature_ == "Serious") {
 
-    
-
-    }
     else if (nature_ == "Timid") {
 
         spd_ = spd_ * 1.1;
         atk_ = atk_ * 0.9;
     }
 
-
-
-
     return;
+
 }
 
 void Pokemon::SetNature() {
@@ -258,6 +364,54 @@ void Pokemon::SetNature() {
     
 
 };
+
+void Pokemon::GainExperience(int xpGain) {
+
+    cout << name_ << " gained " << xpGain << " points of XP!" << endl;
+    int prevXp = totalXP_;
+    totalXP_ = totalXP_ + xpGain;
+
+    while (totalXP_ >= XPUntilNextLvl) {
+
+        LvlUp();
+        int extraXP = totalXP_ - XPUntilNextLvl;
+        SetExperience();
+        totalXP_ = totalXP_ + extraXP;
+
+    }
+    
+    
+    
+
+}
+
+void Pokemon::LvlUp() {
+
+    lvl_++;
+
+    //Check if can evolve
+    int oldHp = maxHp_;
+    int oldAtk = atk_;
+    int oldDef = def_;
+    int oldSpAtk = spAtk_;
+    int oldSpDef = spDef_;
+    int oldSpd = spd_;
+
+    UpdateCurrentStats();
+
+    cout << name_ << " leveled up to level " << lvl_ << "!" << endl;
+    cout << "HP : " << oldHp << " ----> " << maxHp_ << endl;
+    cout << "ATK : " << oldAtk << " ----> " << atk_ << endl;
+    cout << "DEF : " << oldDef << " ----> " << def_ << endl;
+    cout << "SPATK : " << oldSpAtk << " ----> " << spAtk_ << endl;
+    cout << "SPDEF : " << oldSpDef << " ----> " << spDef_ << endl;
+    cout << "SPD : " << oldSpd << " ----> " << spd_ << endl;
+    cout << "\n" << endl;
+
+    
+    
+
+}
 
 void Pokemon::AddMove(Move m) {
 
@@ -336,6 +490,19 @@ void Pokemon::setName(string name) {
 string Pokemon::getName() {
 
     return name_;
+
+}
+
+void Pokemon::setNature(string nature) {
+
+    nature_ = nature;
+
+
+}
+
+string Pokemon::getNature() {
+
+    return nature_;
 
 }
 
@@ -448,3 +615,64 @@ int Pokemon::getBaseSpdef() {
     return baseSpdef_;
 
 }
+
+void Pokemon::setAtk(int atk) {
+
+    atk_ = atk;
+
+}
+
+int Pokemon::getAtk() {
+
+    return atk_;
+
+}
+
+void Pokemon::setDef(int def) {
+
+    def_ = def;
+
+}
+
+int Pokemon::getDef() {
+
+    return def_;
+
+}
+
+void Pokemon::setSpAtk(int spAtk) {
+
+    spAtk_ = spAtk;
+
+}
+
+int Pokemon::getSpAtk() {
+
+    return spAtk_;
+
+}
+
+void Pokemon::setSpDef(int spDef) {
+
+    spDef_ = spDef;
+
+}
+
+int Pokemon::getSpDef() {
+
+    return spDef_;
+
+}
+
+void Pokemon::setSpd(int spd) {
+
+    spd_ = spd;
+
+}
+
+int Pokemon::getSpd() {
+
+    return spd_;
+
+}
+
